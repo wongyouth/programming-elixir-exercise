@@ -1,5 +1,5 @@
 defmodule DocTest do
-	use ExUnit.Case
+  use ExUnit.Case
 
-	doctest Issues.TableFormatter
+  doctest Issues.TableFormatter
 end

@@ -1,43 +1,43 @@
 defmodule TableFormatterTest do
-	use ExUnit.Case
-	# import ExUnit.CaptureIO
+  use ExUnit.Case
+  # import ExUnit.CaptureIO
 
-	alias Issues.TableFormatter, as: TF
+  alias Issues.TableFormatter, as: TF
 
-	def simple_test_data do
-		[
-			%{
-				"number" => 23,
-				"created_at" => "2018-03-31T12:00:00Z",
-				"title" => "first"
-			},
-			%{
-				"number" => 22,
-				"created_at" => "2018-03-30T12:00:00Z",
-				"title" => "2dn"
-			},
-			%{
-				"number" => 21,
-				"created_at" => "2018-03-21T12:00:00Z",
-				"title" => "3th"
-			}
-		]
-	end
+  def simple_test_data do
+    [
+      %{
+        "number" => 23,
+        "created_at" => "2018-03-31T12:00:00Z",
+        "title" => "first"
+      },
+      %{
+        "number" => 22,
+        "created_at" => "2018-03-30T12:00:00Z",
+        "title" => "2dn"
+      },
+      %{
+        "number" => 21,
+        "created_at" => "2018-03-21T12:00:00Z",
+        "title" => "3th"
+      }
+    ]
+  end
 
-	def headers, do: ["number", "created_at", "title"]
+  def headers, do: ["number", "created_at", "title"]
 
-	def split_into_3_columns do
-		TF.split_into_columns(simple_test_data(), headers())
-	end
+  def split_into_3_columns do
+    TF.split_into_columns(simple_test_data(), headers())
+  end
 
 
-	test "split_into_columns" do
-		columns = split_into_3_columns()
+  test "split_into_columns" do
+    columns = split_into_3_columns()
 
-		# IO.puts columns
+    # IO.puts columns
 
-		assert length(columns) == length(headers())
-	end
+    assert length(columns) == length(headers())
+  end
 
 @data [
   %{
@@ -84,7 +84,7 @@ defmodule TableFormatterTest do
   }
 ]
 
-	test "print_table_for_columns" do
-		TF.print_table_for_columns(@data, headers())
-	end
+  test "print_table_for_columns" do
+    TF.print_table_for_columns(@data, headers())
+  end
 end

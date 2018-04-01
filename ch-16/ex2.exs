@@ -1,21 +1,21 @@
 defmodule Ex2 do
-	use GenServer
+  use GenServer
 
-	def init(args) do
-		{:ok, Enum.reverse(args)}
-	end
+  def init(args) do
+    {:ok, Enum.reverse(args)}
+  end
 
-	def handle_call(:pop, _, []) do
-		{:reply, nil, []}
-	end
+  def handle_call(:pop, _, []) do
+    {:reply, nil, []}
+  end
 
-	def handle_call(:pop, _, [ head | rest ]) do
-		{:reply, head, rest}
-	end
+  def handle_call(:pop, _, [ head | rest ]) do
+    {:reply, head, rest}
+  end
 
-	def handle_cast({:push, item}, list) do
-		{:noreply, [item | list]}
-	end
+  def handle_cast({:push, item}, list) do
+    {:noreply, [item | list]}
+  end
 end
 
 
@@ -23,7 +23,7 @@ end
 GenServer.cast(pid, {:push, 4})
 
 Enum.each 1..4, fn _ ->
-	IO.puts GenServer.call(pid, :pop)
+  IO.puts GenServer.call(pid, :pop)
 end
 
 
